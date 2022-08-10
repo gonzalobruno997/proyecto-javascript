@@ -22,14 +22,15 @@ listaProductos.push(new Producto("Salmon rosado", 4100, 20, "Pencas"));
 listaProductos.push(new Producto("Filet de merluza", 1100, 50, "kilos"));
 listaProductos.push(new Producto("Rabas", 1800, 30, "kilos"));
 listaProductos.push(new Producto("Mejillones", 1600, 10, "kilos"));
-let listadoProductos = "";
-for (let i = 0; i < listaProductos.length; i++) {
-    listaProductos[i].sumarIva();
-    listadoProductos += `Producto ${i+1}: `;
-    for (const propiedad in listaProductos[i]) {
-        listadoProductos += `${propiedad}: ${listaProductos[i][propiedad]} `;
-    }
-    listadoProductos += "\n\n";
+
+for (const element of listaProductos) {
+    let contenedor = document.createElement("div");
+    contenedor.innerHTML = `<h2> ${element.nombre} </h2>
+                            <p>precio: ${element.precio} </p>
+                            <p>stock: ${element.stock} </p>
+                            <p>unidad de medida: ${element.unidadDeMedida} </p>    
+    `;
+    document.querySelector("#contenedorProductos").append(contenedor);
 }
 
 let arregloCompra = [];
@@ -37,7 +38,7 @@ let nombreP = "";
 let cantidadP = 0;
 let indiceP = 0;
 do{
-    nombreP = prompt("ingrese el nombre del producto a comprar(PARA FINALIZAR ESCRIBA COMPRAR) \n\n" + listadoProductos);
+    nombreP = prompt("ingrese el nombre del producto a comprar(PARA FINALIZAR ESCRIBA COMPRAR) \n\n" );
     const productoSeleccionado = listaProductos.find( (element) => element.nombre.toLowerCase() == nombreP.toLowerCase());
     if(productoSeleccionado){
         cantidadP = parseInt(prompt("ingrese la cantidad de productos que desea comprar"));
@@ -62,7 +63,9 @@ do{
     }
 }while(nombreP.toLowerCase() != "comprar")
 const total = arregloCompra.reduce((acumulador, elemento) => acumulador + elemento.subTotal, 0);
-alert(`la compra ha sido procesada con exito, el total a abonar es de: ${total}`);
+
+let parrafoResultado = document.querySelector("#resultado");
+parrafoResultado.innerText = `la compra ha sido procesda con exito el monto final es de: ${total} `;
 
 
 

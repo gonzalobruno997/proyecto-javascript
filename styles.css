@@ -1,0 +1,15 @@
+#contenedorProductos{
+    display: flex;
+    justify-content: space-around;
+    max-width: 1024px;
+    margin:auto;
+    padding: 2rem 0;
+    background-color: #000000;
+}
+#resultado{
+    text-align: center;
+    font-size: 24px;
+}
+#contenedorProductos div{
+    color: #ffffff;
+}
