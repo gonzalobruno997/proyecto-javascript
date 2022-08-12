@@ -34,23 +34,23 @@ for (const element of listaProductos) {
 }
 
 let arregloCompra = [];
-let nombreP = "";
-let cantidadP = 0;
-let indiceP = 0;
+let nombreProducto = "";
+let cantidadProducto = 0;
+let indiceProducto = 0;
 do{
-    nombreP = prompt("ingrese el nombre del producto a comprar(PARA FINALIZAR ESCRIBA COMPRAR) \n\n" );
-    const productoSeleccionado = listaProductos.find( (element) => element.nombre.toLowerCase() == nombreP.toLowerCase());
+    nombreProducto = prompt("ingrese el nombre del producto a comprar(PARA FINALIZAR ESCRIBA COMPRAR) \n\n" );
+    const productoSeleccionado = listaProductos.find( (element) => element.nombre.toLowerCase() == nombreProducto.toLowerCase());
     if(productoSeleccionado){
-        cantidadP = parseInt(prompt("ingrese la cantidad de productos que desea comprar"));
-        if (!(isNaN(cantidadP))){
-            if(productoSeleccionado.stock >= cantidadP){
+        cantidadProducto = parseInt(prompt("ingrese la cantidad de productos que desea comprar"));
+        if (!(isNaN(cantidadProducto))){
+            if(productoSeleccionado.stock >= cantidadProducto){
                 arregloCompra.push(
-                    {nombre: productoSeleccionado.nombre, precio: productoSeleccionado.precio, cantidad: cantidadP, subTotal: cantidadP * productoSeleccionado.precio}
+                    {nombre: productoSeleccionado.nombre, precio: productoSeleccionado.precio, cantidad: cantidadProducto, subTotal: cantidadProducto * productoSeleccionado.precio}
                     );
-                    indiceP = listaProductos.findIndex((element) => element.nombre == productoSeleccionado.nombre);
-                    listaProductos[indiceP].descontarStock(cantidadP);
-                    if(listaProductos[indiceP].stock == 0){
-                        listaProductos[indiceP].sinStock();
+                    indiceProducto = listaProductos.findIndex((element) => element.nombre == productoSeleccionado.nombre);
+                    listaProductos[indiceProducto].descontarStock(cantidadProducto);
+                    if(listaProductos[indiceProducto].stock == 0){
+                        listaProductos[indiceProducto].sinStock();
                         alert("este producto quedo con el stock agotado");
                     } 
 
@@ -58,10 +58,10 @@ do{
                 alert("no hay stock disponible del producto seleccionado")
             }
         }
-    }else if(nombreP.toLowerCase() != "comprar"){
+    }else if(nombreProducto.toLowerCase() != "comprar"){
         alert("el producto seleccionado no se encuentra disponible");
     }
-}while(nombreP.toLowerCase() != "comprar")
+}while(nombreProducto.toLowerCase() != "comprar")
 const total = arregloCompra.reduce((acumulador, elemento) => acumulador + elemento.subTotal, 0);
 
 let parrafoResultado = document.querySelector("#resultado");
