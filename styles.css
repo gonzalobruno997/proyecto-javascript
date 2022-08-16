@@ -5,6 +5,7 @@
     margin:auto;
     padding: 2rem 0;
     background-color: #000000;
+    margin-bottom: 2rem;
 }
 #resultado{
     text-align: center;
@@ -12,4 +13,76 @@
 }
 #contenedorProductos div{
     color: #ffffff;
+    
+}
+
+#contenedorProductos div a{
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    display: block;
+    width: 60px;
+    cursor: pointer;
+}
+
+#contenedorProductos div input{
+    margin-bottom: 1rem;
+    max-width: 60px;
+}
+
+#contenedorProductos div a:hover{
+    background-color: #fff;
+    color: #000000;
+}
+
+h2{
+    text-align: center;
+}
+table{
+    width: 1024px;
+    margin:auto;
+    padding: 2rem 0;
+    background-color: #000000;
+    color: #fff;
+}
+table td{
+    text-align: center;
+}
+
+.contenedorBtn{
+    width: 1024px;
+    padding: .5rem 0;
+    margin:auto;
+    background-color: #000000;
+    text-align: right;
+    padding-bottom: 1rem;
+}
+.contenedorBtn a{
+    margin-right: 2rem;
+    text-decoration: none;
+    padding: .5rem .8rem;
+    background-color: #fff;
+    color: #000;
+    border-radius: 5px;
+}
+.contenedorBtn a:hover{
+    opacity: .7;
+}
+.btn-quitar{
+    cursor: pointer;
+}
+.btn-quitar:hover{
+    opacity: .7;
+}
+#totalCompra{
+    margin-left: auto;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    padding: .5rem .8rem;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    max-width: 100px;
+    display: none;
 }

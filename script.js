@@ -1,5 +1,6 @@
 class Producto {
-    constructor(nombre, precio, stock, unidadDeMedida){
+    constructor(id, nombre, precio, stock, unidadDeMedida){
+        this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.stock = stock;
@@ -17,58 +18,129 @@ class Producto {
     }
 
 }
-const listaProductos = [];
-listaProductos.push(new Producto("Salmon rosado", 4100, 20, "Pencas"));
-listaProductos.push(new Producto("Filet de merluza", 1100, 50, "kilos"));
-listaProductos.push(new Producto("Rabas", 1800, 30, "kilos"));
-listaProductos.push(new Producto("Mejillones", 1600, 10, "kilos"));
 
-for (const element of listaProductos) {
-    let contenedor = document.createElement("div");
-    contenedor.innerHTML = `<h2> ${element.nombre} </h2>
-                            <p>precio: ${element.precio} </p>
-                            <p>stock: ${element.stock} </p>
-                            <p>unidad de medida: ${element.unidadDeMedida} </p>    
-    `;
-    document.querySelector("#contenedorProductos").append(contenedor);
-}
+const listaProductos = [];
+
+listaProductos.push(new Producto(1,"Salmon rosado", 4100, 20, "Pencas"));
+listaProductos.push(new Producto(2,"Filet de merluza", 1100, 50, "kilos"));
+listaProductos.push(new Producto(3,"Rabas", 1800, 30, "kilos"));
+listaProductos.push(new Producto(4,"Mejillones", 1600, 10, "kilos"));
 
 let arregloCompra = [];
-let nombreProducto = "";
+let producto;
 let cantidadProducto = 0;
-let indiceProducto = 0;
-do{
-    nombreProducto = prompt("ingrese el nombre del producto a comprar(PARA FINALIZAR ESCRIBA COMPRAR) \n\n" );
-    const productoSeleccionado = listaProductos.find( (element) => element.nombre.toLowerCase() == nombreProducto.toLowerCase());
-    if(productoSeleccionado){
-        cantidadProducto = parseInt(prompt("ingrese la cantidad de productos que desea comprar"));
-        if (!(isNaN(cantidadProducto))){
-            if(productoSeleccionado.stock >= cantidadProducto){
-                arregloCompra.push(
-                    {nombre: productoSeleccionado.nombre, precio: productoSeleccionado.precio, cantidad: cantidadProducto, subTotal: cantidadProducto * productoSeleccionado.precio}
-                    );
-                    indiceProducto = listaProductos.findIndex((element) => element.nombre == productoSeleccionado.nombre);
-                    listaProductos[indiceProducto].descontarStock(cantidadProducto);
-                    if(listaProductos[indiceProducto].stock == 0){
-                        listaProductos[indiceProducto].sinStock();
-                        alert("este producto quedo con el stock agotado");
-                    } 
+let idProducto = 0;
+let tablaCuerpo = document.getElementById('tablaCuerpo');
 
-            }else{
-                alert("no hay stock disponible del producto seleccionado")
-            }
-        }
-    }else if(nombreProducto.toLowerCase() != "comprar"){
-        alert("el producto seleccionado no se encuentra disponible");
+function armadoCarrito(arregloCarrito){
+    tablaCuerpo.innerHTML = "";
+    let total = 0;
+    for (const elemento of arregloCarrito) {
+        let fila = document.createElement('tr');
+        let colNombre = document.createElement('td');
+        colNombre.innerText = elemento.nombre;
+        let colPrecio = document.createElement('td');
+        colPrecio.innerText = `$${elemento.precio}`;
+        let colCantidad = document.createElement('td');
+        colCantidad.innerText = elemento.cantidad;
+        let colSubtotal = document.createElement('td');
+        colSubtotal.innerText = `$${elemento.subtotal}`;
+        let btnQuitar = document.createElement('td');
+        btnQuitar.innerText = 'Quitar';
+        btnQuitar.setAttribute('class','btn-quitar');
+        btnQuitar.addEventListener('click', () =>{
+            fila.remove();
+            arregloCompra = arregloCompra.filter(element => element.id != elemento.id);
+            armadoCarrito(arregloCompra);
+        })
+        fila.append(colNombre);
+        fila.append(colPrecio);
+        fila.append(colCantidad);
+        fila.append(colSubtotal);
+        fila.append(btnQuitar);
+        tablaCuerpo.append(fila);
+
+        total += elemento.subtotal; 
     }
-}while(nombreProducto.toLowerCase() != "comprar")
-const total = arregloCompra.reduce((acumulador, elemento) => acumulador + elemento.subTotal, 0);
 
-let parrafoResultado = document.querySelector("#resultado");
-parrafoResultado.innerText = `la compra ha sido procesda con exito el monto final es de: ${total} `;
+    document.querySelector('#totalCompra').innerText = `Total: $${total}`;
+    document.querySelector('#totalCompra').style.display = "block";
 
 
+}
+
+function agregarAlCarrito(idProducto,cantidadProducto){
+
+    producto = listaProductos.find( (element) => idProducto == element.id);
+    let subTotal =  cantidadProducto * producto.precio;
+
+
+    let productoRepetido = arregloCompra.findIndex( (element) => idProducto == element.id);
+    
+    if(productoRepetido != -1){
+        arregloCompra[productoRepetido].cantidad += cantidadProducto;
+        arregloCompra[productoRepetido].subtotal = arregloCompra[productoRepetido].cantidad * arregloCompra[productoRepetido].precio
+    }else{
+        arregloCompra.push({id:producto.id,nombre:producto.nombre, precio: producto.precio,cantidad:parseInt(cantidadProducto), subtotal: subTotal});
+    }
+
+}
+
+function mostrarProductos(){
+
+    for (const element of listaProductos) {
+        let contenedor = document.createElement("div");
+        contenedor.innerHTML = `<h2> ${element.nombre} </h2>
+                                <p>precio: $${element.precio} </p>
+                                <p>stock: ${element.stock} </p>
+                                <p>unidad de medida: ${element.unidadDeMedida} </p>
+                                <label> Cantidad: </label><input type="number" value='1' min="1">
+        `;
+    
+        let enlaceCompra = document.createElement('a');
+        enlaceCompra.innerText = "Comprar";
+        enlaceCompra.id = element.id;
+    
+        enlaceCompra.addEventListener('click', (e) => {
+    
+            idProducto = enlaceCompra.id;
+            cantidadProducto = parseInt(e.target.previousElementSibling.value);
+    
+            
+            agregarAlCarrito(idProducto,cantidadProducto);
+            
+            armadoCarrito(arregloCompra);
+    
+    
+        });
+    
+        contenedor.append(enlaceCompra);
+    
+        document.querySelector("#contenedorProductos").append(contenedor);
+    }
+    
+}
 
 
 
+let btnComprar = document.querySelector('#btnComprar');
 
+btnComprar.addEventListener('click', () =>{
+    if(arregloCompra.length != 0){
+        document.body.innerHTML = '';
+        let resultadoFinal = document.createElement('p');
+        resultadoFinal.innerText = 'La compra ha sido procesada con éxito';
+        resultadoFinal.style.backgroundColor = "#000";
+        resultadoFinal.style.color = "#fff";
+        resultadoFinal.style.padding = "2rem";
+        resultadoFinal.style.textAlign = "center";
+        document.body.append(resultadoFinal);
+    }else{
+        document.querySelector('#resultado').innerText = 'Para finalizar la compra almenos debe agregar un producto al carrito';
+    }
+    
+});
+
+
+
+mostrarProductos();
