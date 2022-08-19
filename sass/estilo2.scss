@@ -1,0 +1,532 @@
+@import "_colores.scss";
+/*map, mixin, extend*/
+$redes: (
+    facebook:#3b5998,
+    twitter:#00acee,
+    linkedin:#0072b1,
+    instagram:#5B51D8
+);
+
+.fb{
+    color: map-get($redes , facebook);
+}
+.tw{
+    color: map-get($redes , twitter);
+}
+.link{
+    color: map-get($redes , linkedin);
+}
+.ig{
+    color: map-get($redes , instagram);
+}
+
+.boton{
+    display: block;
+    max-width: 145px;
+    margin: auto;
+    margin-top: 16px;
+    text-decoration: none;
+    padding: 6px 8px;
+    text-align: center;
+    border-radius: 5px;
+    border: 0;
+    transition: all .5s ease;
+}
+
+@mixin background-seccion($bk) {
+    padding: 32px 0;
+    width: 100%;
+    background-image: $bk;
+    background-size: cover;
+}
+/*estilos generales*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior:smooth;
+}
+body{
+    font-family: 'Poppins', sans-serif;
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Oswald', sans-serif;
+}
+@keyframes logoDesplazamiento{
+    0%{
+        transform: scale(0.5) ;
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+@keyframes tituloDesplazamiento{
+    0%{
+        transform: translateX(-1000px) ;
+    }
+    
+    100%{
+        transform: translateX(0px);
+    }
+}
+
+/*estilos del header*/
+header{
+    width: 100%;
+    background-image: linear-gradient(to left, #fff,#2cb7ee);
+    font-size: 50px;
+    color: #000000;
+    padding: 20px 0;
+    .navbar{
+        .navbar-brand{
+            animation-name: logoDesplazamiento;
+            animation-duration: 2s;
+            font-size: 40px;
+        }
+        .nav-link {
+            font-size: 18px;
+        }
+        .navbar-collapse{
+            justify-content: flex-end;
+        }
+    }
+    #spanCarrito{
+        font-size: 16px;
+        position: relative;
+        left: -10px;
+        background: #ccc;
+        height: 20px;
+        width: 20px;
+        text-align: center;
+        border-radius: 100%;
+        display: none
+    }
+}
+/*estilos pagina inicio*/
+.seccion-bienvenida{
+    @include background-seccion(url(../img/mar.jpg));
+    h1{
+        text-align: center;
+        font-size: 42px;
+        animation-name: tituloDesplazamiento;
+        animation-duration: 2s;
+    }
+    .descripcion{
+        h2{
+            margin-bottom: 22px;
+            font-size: 28px;
+            color: #fff;
+        }
+        p{
+            color: #fff;
+            margin-bottom: 16px;
+            margin-left: 8px;
+        }
+    }
+    .img-bienvenida{
+        img{
+            display:block;
+            max-width: 80%;
+            margin: auto;
+        }
+    }
+    
+}
+.seccion-productos{
+    padding: 32px 0;
+    background-image: linear-gradient(to left, #fff,#2cb7ee);
+    .titulo-seccion{
+        text-align: center;
+        font-size: 38px;
+        margin-bottom: 32px;
+    }
+    .producto{
+        padding-bottom: 16px;
+        text-align: center;
+        img{
+            margin-bottom: 16px;
+        }
+        p{
+            font-size: 22px;
+        }
+        .btn-mas{
+            @extend .boton;
+            color: #000;
+            background-color: $color-enfasis;
+            &:hover{
+                transform: scale(1.2);
+            }
+        }
+    }
+    .prod1{
+        background-color: #ffab5f;
+    }
+    .prod2{
+        background-color: #f4f8f9;
+    }
+    .prod3{
+        background-color: #ffb98f;
+        
+    }
+}
+/*estilos de footer*/
+footer{
+    padding: 16px 0;
+    width: 100%;
+    background-color: #000;
+    color: #ffffff;
+    text-align: center;
+    font-size: 16px;
+    p{
+        margin-bottom: 16px;
+    }
+    .social-media{
+        a{
+            i{
+                font-size: 30px;
+                letter-spacing: 20px;
+                transition: all .5s ease;
+                &:hover{
+                    transform: scale(1.2);
+                }
+            }
+        }
+    }
+}
+.subir{
+    height: 60px;
+    width: 60px;
+    background-color: aquamarine;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 30px;
+    border-radius: 50%;
+    border: 3px solid #3584ca;
+    color: #ffffff;
+    box-shadow: 0 0 10px #ffffff;
+}
+/*estilos pagina productos*/
+.pagina-productos{
+    .nuestros-productos{
+        @include background-seccion( url("../img/agua.webp"));
+        background-position: center center;
+        .titulo-seccion{
+            text-align: center;
+            font-size: 42px;
+            animation-name: tituloDesplazamiento;
+            animation-duration: 2s;
+        }
+        .producto {
+            text-align: center;
+            padding: 1rem 0;
+            margin-bottom: .5rem;
+            &:hover{
+              //  transform: rotate(5deg);
+            }
+            p{
+                font-size: 20px;
+                
+            }
+            .titulo-producto{
+                font-weight: bold;
+                font-style: normal;
+                margin-bottom: 18px;
+            }
+            img{
+                border-top-right-radius: 5px;
+                border-top-left-radius: 5px;
+            }
+            .input-cantidad{
+                max-width: 60px;
+                margin: auto;
+            }
+            .btn-carrito{
+                @extend .boton;
+                background-color: #00acee;
+                color: #fff;
+                cursor: pointer;
+                margin-top: 1rem;
+                &:hover{
+                    transition: all .5s ease;
+                    opacity: .6;
+                }
+            }
+        }
+        .row{
+            div:nth-child(1n) .producto{
+                background-color: #ffab5f;
+            }
+            div:nth-child(2n) .producto{
+                background-color: #f4f8f9;
+            }
+            div:nth-child(3n) .producto{
+                background-color: #ffb98f;
+            }
+        }
+        
+        .medios-pago{
+            text-align: center;
+            background-color: #2cb7ee;
+            padding: 1rem 0.6rem;
+            color: #fff;
+        }
+    }
+    
+} 
+/*estilos pagina contacto*/
+.pagina-contacto{
+    .contacto{
+        padding: 32px 0;
+        background: url('../img/redes.jpg');
+        background-size: cover;
+        background-position: center;
+        .titulo_seccion{
+            text-align: center;
+            color: #fff;
+            font-size: 42px;
+            animation-name: tituloDesplazamiento;
+            animation-duration: 2s;
+        }
+        .form-contact{
+            text-align: center;
+            border-radius: 6px;
+            padding: 16px 0;
+            background-color: #2cb7ee6e;
+            label{
+                display: block;
+                font-family: 'Oswald', sans-serif;
+                font-weight: bold;
+            }
+            input, textarea{
+                padding: .2rem;
+            }
+            .btn-enviar{
+                @extend .boton;
+                background-color: #2c75ee;
+                color: #fff;
+                cursor: pointer;
+                margin-top: 1rem;
+                &:hover{
+                    transition: all .5s ease;
+                    opacity: .6;
+                }
+            }
+        }
+        .redes-sociales{
+            text-align: center;
+            ul{
+                list-style-type: none;
+                padding: 0;
+                height: 100%;
+                display: flex;
+                background-color: #2c75eea8;
+                flex-direction: column;
+                justify-content: center;
+                border-radius: 5px;
+                gap: 20px;
+                color: #fff;
+                li a{
+                    color: #fff;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    
+} 
+/* PAGINA REGISTRO */
+@keyframes desplazamientoColumna1{
+    0%{
+        transform:translateX(-500px);
+    }
+    100%{
+        transform: translateX(0px);
+
+    }
+}
+@keyframes desplazamientoColumna2{
+    0%{
+        transform:translateX(500px);
+    }
+    100%{
+        transform: translateX(0px);
+
+    }
+}
+.pagina-registro{
+    .registro{
+        padding: 32px 0;
+        background: url('../img/mar2.jpg');
+        background-size: cover;
+        background-position: center;
+        .titulo_seccion{
+            text-align: center;
+            font-size: 42px;
+            animation-name: tituloDesplazamiento;
+            animation-duration: 2s;
+        }
+        .form-registro{
+            text-align: center;
+            border-radius: 5px;
+            padding: 16px 0;
+            background-color: #2cb7ee6e;
+            animation-name: desplazamientoColumna1;
+            animation-duration: 1s;
+            label{
+                display: block;
+                font-family: 'Oswald', sans-serif;
+                font-weight: bold;
+            }
+            label:last-child{
+                margin: 1.2rem 0;
+                display: inline-block;
+            }
+            input, textarea{
+                padding: .2rem;
+            }
+            input:focus{
+                outline: 1px solid #2c75ee;
+                box-shadow: 1px 1px #ffffff;
+            }
+            .btn-registro{
+                @extend .boton;
+                background-color: #2c75ee;
+                color: #fff;
+                cursor: pointer;
+                margin-top: 1rem;
+                &:hover{
+                    transition: all .5s ease;
+                    opacity: .6;
+                }
+            }
+        }
+        .mensaje{
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            background-color: #2c75ee;
+            gap: 30px;
+            justify-content: center;
+            color: #fff;
+            padding: 1rem;
+            border-radius: 5px;
+            animation-name: desplazamientoColumna2;
+            animation-duration: 1s;
+        }
+    }
+} 
+/*pagina ubicacion*/
+.pagina-ubicacion{
+    .ubicacion{
+        padding: 32px 0;
+        background: url('../img/fondo.jpg');
+        background-size: cover;
+        background-position: center;
+        .titulo-seccion{
+    
+            text-align: center;
+            margin-bottom: 32px;
+            font-size:42px;
+            animation-name: tituloDesplazamiento;
+            animation-duration: 2s;
+        }
+        .descripcion{
+            text-align: center;
+            background-color: #2cb7ee;
+            padding: 1rem 0.6rem;
+            color: #fff;
+            ul{
+                list-style: none;
+            
+            }
+            p{
+                margin: 1rem 0;
+            }
+            a{
+                color: #2c75ee;
+                text-decoration: none;
+                font-weight: bold;
+            }
+        }
+    } 
+}
+
+/* PAGINA CARRITO */
+.pagina-carrito{
+    .img-carrito{
+        width: 120px;
+    }
+    .btn-quitar{
+        color: rgb(206, 30, 30)!important;
+        cursor: pointer;
+    }
+    #resultado {
+        display: none;
+    }
+}
+
+@media only screen and (min-width:320px) and (max-width:767px) {
+    
+    header{
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .nav1 ul{
+            flex-direction: column;
+            li{
+                margin-right: 0;
+                margin-bottom: 16px;
+            }
+        }
+    } 
+    .seccion-bienvenida {
+        height: auto;
+        .descripcion{
+            text-align: center;
+            p{
+                font-size: 18px;
+            }
+        }
+        
+    }
+    .pagina-contacto .contacto .redes-sociales ul{
+        padding: 1rem 0;
+    }
+    
+    .registro .form-registro label:last-child{
+        font-size: 13px;
+    }
+}
+
+@media only screen and (min-width:768px) and (max-width:1023px){
+    header .logo{
+        font-size: 32px;
+    }
+    .pagina-productos .nuestros-productos .producto p{
+        font-size: 24px;
+    }
+}
+@media screen and (min-with:1024px) {
+    
+    .pagina-productos .nuestros-productos .producto p{
+        font-size: 24px;
+    }
+
+}
+@media screen and (min-width:1960px) {
+    .contacto .form-contact input,.contacto .form-contact textarea{
+        width: 30%;
+    }
+    .registro .form-registro input{
+        width: 30%;
+    }
+    .registro .form-registro #condiciones{
+        width: auto;
+    }
+}

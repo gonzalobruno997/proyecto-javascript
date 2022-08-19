@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Sitio oficial de la pescadería World Fish, pagina de productos donde ofrecemos nuestros servicios y productos a todos aquellos interesados en la gastronomía en general. Ofrecemos venta al por mayor y menor, además servicios de catering y delivery.">
+
+    <meta name="keywords" content="WorldFish, World Fish, pescado, pescaderia, venta de pescado, servicio de catering, gastronomía, productos de pescadería, mariscos, merluza, mejillones, salmon, rosa, langostinos, gatuzo, rabas, Temperley, Lomas de zamora.">
+
+    <title>Pescaderia World Fish - Productos</title>
+    <!-- TIPOGRAFÍAS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <!-- FONTAWESOME ICONOS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- CSS bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!--ESTILOS PERSONALIZADOS-->
+    <link rel="stylesheet"  href="../css/estilo2.css">
+    
+</head>
+<body class="body1">
+    <header>
+        <nav class="navbar navbar-expand-lg ">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../index.html">world<i class="fa-solid fa-earth-americas"></i><span>fish</span></a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../index.html">Incio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="./productos.html">Productos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./registro.html">Registro</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./contacto.html">Contacto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./ubicacion.html">Ubicación</a>
+                        </li>
+                        <li class="nav-item">
+                            <div class="d-flex">
+                                <a class="nav-link active" href="./carrito.html"><i class="fa-solid fa-cart-shopping"></i></a>
+                                <span id="spanCarrito"></span>
+                            </div>
+                            
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="pagina-carrito">
+
+        <section class="seccion-carrito py-4">
+            <div class="container">
+                <h2 class="text-center" id="encabezadoCarrito">Carrito de compras</h2>
+                <p id="resultado" class="text-center bg-success text-white py-3"></p>
+                <div class="table-responsive mt-4" id="contenedorTabla">
+                    <table class="table table-striped table-hover align-middle">
+                        <thead>
+                            <tr>
+                            <th scope="col">Imagen</th>
+                            <th scope="col">Producto</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Subtotal</th>
+                            <th scope="col">Quitar</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tablaCuerpo">
+                        
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="d-flex justify-content-end align-items-center" id="contenedorFinalizar">
+                    <a href="#" id="btnComprar" class="btn btn-success me-4">Finalizar Compra</a>
+                    <p id="totalCompra" class="mb-0 fw-bold">Total: $0</p>
+                </div>
+
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Todos los derechos reservados por copyright</p>
+        <div class="social-media">
+            <a href=""><i class="fa-brands fa-facebook fb"></i></a>
+            <a href=""><i class="fa-brands fa-instagram ig"></i></a>
+            <a href=""><i class="fa-brands fa-twitter tw"></i></a>
+            <a href=""><i class="fa-brands fa-linkedin-in link"></i></a>
+        </div>
+    </footer>
+    <a href="#" class="subir">🐟</a>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+    </script>
+    <script src="../js/script.js"></script>
+    <script src="../js/carrito.js"></script>
+</body>
+</html>

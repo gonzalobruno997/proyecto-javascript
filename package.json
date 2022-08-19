@@ -1,0 +1,19 @@
+{
+  "name": "worldfish",
+  "version": "1.0.0",
+  "description": "proyecto coder house",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gonzalobruno997/worldfish-Bruno.git"
+  },
+  "author": "Gonzalo Bruno",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gonzalobruno997/worldfish-Bruno/issues"
+  },
+  "homepage": "https://github.com/gonzalobruno997/worldfish-Bruno#readme"
+}

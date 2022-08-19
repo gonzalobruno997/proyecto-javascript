@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Sitio oficial de la pescadería World Fish, pagina de registro donde podras registarte como cliente y acceder a descuentos exclusivos. Ofrecemos venta al por mayor y menor, además servicios de catering y delivery.">
+
+    <meta name="keywords" content="WorldFish, World Fish, registro, descuentos, pescado, pescaderia, venta de pescado, servicio de catering, gastronomía, productos de pescadería, mariscos, merluza, mejillones, salmon rosa, langostinos, Temperley, Lomas de zamora.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- CSS bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/estilo2.css">
+    <title>Pescaderia World Fish - Registro</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg ">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="../index.html">world<i class="fa-solid fa-earth-americas"></i><span>fish</span></a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link"  href="../index.html">Incio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./productos.html">Productos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="./registro.html">Registro</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./contacto.html">Contacto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="./ubicacion.html">Ubicación</a>
+                        </li>
+                        <li class="nav-item">
+                            <div class="d-flex">
+                                <a class="nav-link" href="./carrito.html"><i class="fa-solid fa-cart-shopping"></i></a>
+                                <span id="spanCarrito"></span>
+                            </div>
+                            
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="pagina-registro">
+        <section class="registro">
+            <div class="container">
+                <h2 class="titulo_seccion mb-5">Registro</h2>
+                <div class="row">
+
+                    <div class="col-md-6 mb-4">
+                        <form class="form-registro" action="#">
+                            <div>
+                                <label for="name">Nombre</label>
+                                <input type="text" name="name" id="name" required>
+                            </div>
+                            <div>
+                                <label for="apellido">Apellido</label>
+                                <input type="text" name="apellido" id="apellido" required>
+                            </div>
+                            <div>
+                                <label for="correo">Correo</label>
+                                <input type="email" name="correo" id="correo" required>
+                            </div>
+                            <div>
+                                <label for="phone">Teléfono</label>
+                                <input type="text" name="phone" id="phone" required>
+                            </div>
+                            <div>
+                                <label for="pass">Contraseña</label>
+                                <input type="password" name="pass" id="pass" required>
+                            </div>
+                            <div>
+                                <label for="pass2">Repita la contraseña</label>
+                                <input type="password" name="pass2" id="pass2" required>
+                            </div>
+        
+                            <div>
+                                <input type="checkbox" name="condiciones" id="condiciones">
+                                <label for="condiciones">Estoy de acuerdo con los terminos y condiciones.</label>
+                                
+                            </div>
+        
+                            
+                            <button type="submit" class="btn-registro">Registrarme</button>
+                        </form>
+                        
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <div class="mensaje h-100">
+                            <h2>Beneficios:</h2>
+                            <p>Registrandote como cliente vas a obtener un codigo de 10% de descuento en el total de tu compra y eso incluye a todos nuestros productos en tanto el beneficio asignado no te limita en nada. </p>
+                            <p>El codigo de descuento te sera enviado por e-mail en la brevedad, anotarse es opcional y gratuito asi que ¡no dudes en hacerlo!. Se comunica world fish con ustedes</p>
+                        </div>
+        
+                    </div>
+                    
+                </div>
+                
+                
+            </div>
+        </section>
+    </main>
+
+            
+    <footer>
+        <p>Todos los derechos reservados por copyright</p>
+        <div class="social-media">
+            <a href=""><i class="fa-brands fa-facebook fb"></i></a>
+            <a href=""><i class="fa-brands fa-instagram ig"></i></a>
+            <a href=""><i class="fa-brands fa-twitter tw"></i></a>
+            <a href=""><i class="fa-brands fa-linkedin-in link"></i></a>
+        </div>
+    </footer>
+    <a href="#" class="subir">🐟</a>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+    </script>
+    <script src="../js/script.js"></script>
+</body>
+</html>
