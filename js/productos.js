@@ -67,24 +67,35 @@ function agregarAlCarrito(idProducto,cantidadProducto){
 
     producto = listaProductos.find( (element) => idProducto == element.id);
 
+    // desestructuracion del objeto.
+    let {id,nombre,precio,stock,imgProducto} =  producto;
+    // operador ternario
+    let stockDisponible = (stock >= cantidadProducto) ? true : false;
 
-    let subTotal =  cantidadProducto * producto.precio;
+    let subTotal =  cantidadProducto * precio;
 
 
     let productoRepetido = arregloCompra.findIndex( (element) => idProducto == element.id);
-    
-    if(productoRepetido != -1){
-        arregloCompra[productoRepetido].cantidad += cantidadProducto;
-        arregloCompra[productoRepetido].subtotal = arregloCompra[productoRepetido].cantidad * arregloCompra[productoRepetido].precio;
+    if (stockDisponible){
+        if(productoRepetido != -1){
+            arregloCompra[productoRepetido].cantidad += cantidadProducto;
+            arregloCompra[productoRepetido].subtotal = arregloCompra[productoRepetido].cantidad * arregloCompra[productoRepetido].precio;
+        }else{
+            arregloCompra.push({id:id,nombre:nombre, precio:precio,cantidad:parseInt(cantidadProducto), subtotal: subTotal, imgProducto:imgProducto});
+        }
     }else{
-        arregloCompra.push({id:producto.id,nombre:producto.nombre, precio: producto.precio,cantidad:parseInt(cantidadProducto), subtotal: subTotal, imgProducto:producto.imgProducto});
+        alert('Stock no disponible para esa cantidad.');
     }
+    
 
     localStorage.setItem('carrito',JSON.stringify(arregloCompra));
 
    // alert('Producto agregado al carrito');
+   if(arregloCompra.length > 0){
     spanCarrito.style.display = "block";
     spanCarrito.textContent = arregloCompra.length;
+   }
+    
 
 }
 

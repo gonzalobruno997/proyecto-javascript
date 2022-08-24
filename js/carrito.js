@@ -1,3 +1,6 @@
+let tablaCuerpo = document.getElementById('tablaCuerpo');
+let parrafoResultado = document.querySelector('#resultado');
+let btnComprar = document.querySelector('#btnComprar');
 
 function armadoCarrito(){
     tablaCuerpo.innerHTML = "";
@@ -42,12 +45,8 @@ function armadoCarrito(){
 
     document.querySelector('#totalCompra').innerText = `Total: $${total}`;
     
-
-
 }
 
-let tablaCuerpo = document.getElementById('tablaCuerpo');
-let parrafoResultado = document.querySelector('#resultado');
 
 
 if(arregloCompra.length > 0){
@@ -55,7 +54,6 @@ if(arregloCompra.length > 0){
 }
 
 
-let btnComprar = document.querySelector('#btnComprar');
 
 btnComprar.addEventListener('click', () =>{
     if(arregloCompra.length != 0){
@@ -64,7 +62,15 @@ btnComprar.addEventListener('click', () =>{
         parrafoResultado.style.display = "block";
         document.querySelector('#contenedorFinalizar').classList.toggle('d-none');
         spanCarrito.style.display = "none";
-        localStorage.clear();
+
+        // OPERADOR OR
+        const comprasRealizadas = JSON.parse(localStorage.getItem('comprasRealizadas')) || [];
+        comprasRealizadas.push(arregloCompra);
+
+        localStorage.setItem('comprasRealizadas',JSON.stringify(comprasRealizadas));
+        localStorage.removeItem('carrito');
+        
+
         
     }else{
         parrafoResultado.textContent = 'Para finalizar la compra almenos debe agregar un producto al carrito';
