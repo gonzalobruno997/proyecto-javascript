@@ -1,0 +1,8 @@
+[
+    {"id":1,"nombre":"Salmon rosado", "precio": 4100, "stock": 20,"unidadDeMedida": "Pencas","imgProducto": "salmonrosa.jpg"},
+    {"id": 2,"nombre": "Filet de merluza", "precio": 1100,"stock": 50, "unidadDeMedida": "Kilos","imgProducto": "filet.jpg"},
+    {"id": 3,"nombre": "Langostinos", "precio": 2700,"stock": 23, "unidadDeMedida": "Kilos","imgProducto": "langostinos.jpg"},
+    {"id": 4,"nombre": "Gatuzo", "precio": 950,"stock": 18, "unidadDeMedida": "Kilos","imgProducto": "gatuzo.jpg"},
+    {"id": 5,"nombre": "Rabas", "precio": 1800,"stock": 30, "unidadDeMedida": "Kilos","imgProducto": "rabas.jpg"},
+    {"id": 6,"nombre": "Mejillones", "precio": 1600,"stock": 10, "unidadDeMedida": "Kilos","imgProducto": "mejillones.jpg"}
+]

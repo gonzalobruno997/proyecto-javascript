@@ -1,48 +1,19 @@
-class Producto {
-    constructor(id, nombre, precio, stock, unidadDeMedida,imgProducto){
-        this.id = id;
-        this.nombre = nombre;
-        this.precio = precio;
-        this.stock = stock;
-        this.unidadDeMedida = unidadDeMedida;
-        this.imgProducto = imgProducto;
-        this.agotado = false;
-    }
-    sumarIva(){
-        this.precio = this.precio * 1.21;
-    } 
-    sinStock(){
-        this.agotado = true;
-    }
-    descontarStock(cantidad){
-        this.stock = this.stock - cantidad;
-    }
-
-}
-
-const listaProductos = [];
-
-listaProductos.push(new Producto(1,"Salmon rosado", 4100, 20, "Pencas","salmonrosa.jpg"));
-listaProductos.push(new Producto(2,"Filet de merluza", 1100, 50, "Kilos","filet.jpg"));
-listaProductos.push(new Producto(3,"Langostinos", 2700, 23, "Kilos","langostinos.jpg"));
-listaProductos.push(new Producto(4,"Gatuzo", 950, 18, "Kilos","gatuzo.jpg"));
-listaProductos.push(new Producto(5,"Rabas", 1800, 30, "Kilos","rabas.jpg"));
-listaProductos.push(new Producto(6,"Mejillones", 1600, 10, "Kilos","mejillones.jpg"));
-
-
-
-
-
-
 let producto;
 let cantidadProducto = 0;
 let idProducto = 0;
 
+
+async function obtenerProductos(){
+    const resp = await fetch('../data.json');
+    const data = await resp.json();
+    mostrarProductos(data);
+
+}
 // CARGA DINAMICA DE LOS PRODUCTOS A TRAVES DE JS.
 
-function mostrarProductos(){
+function mostrarProductos(arregloProductos){
 
-    for (const element of listaProductos) {
+    for (const element of arregloProductos) {
         //CREAR UN DIV PARA CONTENER LOS DATOS DEL PRODUCTO.
         let contenedor = document.createElement("div");
         contenedor.setAttribute('class','col-12 col-md-4');
@@ -60,12 +31,29 @@ function mostrarProductos(){
     
         document.querySelector("#contenedorProductos").append(contenedor);
     }
+
+    let btnCarrito = document.querySelectorAll('.btn-carrito');
+
+    btnCarrito.forEach(element => {
+
+        element.addEventListener('click',(e) => {
+            e.preventDefault();
+
+            idProducto = e.target.id;
+
+            cantidadProducto = parseInt(e.target.previousElementSibling.value);
+            
+            agregarAlCarrito(idProducto,cantidadProducto,arregloProductos);
+            
+
+        })
+    });
     
 }
 
-function agregarAlCarrito(idProducto,cantidadProducto){
+function agregarAlCarrito(idProducto,cantidadProducto,arregloProductos){
 
-    producto = listaProductos.find( (element) => idProducto == element.id);
+    producto = arregloProductos.find( (element) => idProducto == element.id);
 
     // desestructuracion del objeto.
     let {id,nombre,precio,stock,imgProducto} =  producto;
@@ -104,33 +92,18 @@ function agregarAlCarrito(idProducto,cantidadProducto){
                 }
             });
     }else{
-        alert('Stock no disponible para esa cantidad.');
+        swal({
+            title: "Error!",
+            text: "La cantidad solicitada supera el stock disponible",
+            icon: "error",
+            buttons: {
+                confirm:"OK" ,
+            }
+            })
+
     }
-    
-
-
     
 
 }
 
-
-
-mostrarProductos();
-
-
-let btnCarrito = document.querySelectorAll('.btn-carrito');
-
-btnCarrito.forEach(element => {
-
-    element.addEventListener('click',(e) => {
-        e.preventDefault();
-
-        idProducto = e.target.id;
-
-        cantidadProducto = parseInt(e.target.previousElementSibling.value);
-        
-        agregarAlCarrito(idProducto,cantidadProducto);
-        
-
-    })
-});
+obtenerProductos();
