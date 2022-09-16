@@ -14,9 +14,23 @@ window.onload = function() {
 
         emailjs.sendForm('service_111qcoh', 'template_s8u25et', this)
         .then(function(response) {
-        console.log('SUCCESS!', response.status, response.text);
+            swal({
+                title: "Exito",
+                text: "Su consulta ha sido procesada exitosamente",
+                icon: "success",
+                buttons: {
+                    confirm:"ok"
+                }
+                })
         }, function(error) {
-        console.log('FAILED...', error);
+            swal({
+                title: "Error!",
+                text: "ha ocurrido un error no se pudo enviar el correo"+error,
+                icon: "error",
+                buttons: {
+                    confirm:"OK" ,
+                }
+                })
         });
     });
 }
