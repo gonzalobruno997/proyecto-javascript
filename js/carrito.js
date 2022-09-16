@@ -51,6 +51,10 @@ function armadoCarrito(){
 
 if(arregloCompra.length > 0){
     armadoCarrito();
+}else{
+    document.querySelector('#contenedorTabla').style.display = 'none';
+    document.querySelector('#contenedorFinalizar').classList.toggle('d-none');
+    document.querySelector('#msjCarritoVacio').classList.toggle('d-none');
 }
 
 
@@ -63,7 +67,7 @@ btnComprar.addEventListener('click', () =>{
         document.querySelector('#contenedorFinalizar').classList.toggle('d-none');
         spanCarrito.style.display = "none";
 
-        // OPERADOR OR
+       
         const comprasRealizadas = JSON.parse(localStorage.getItem('comprasRealizadas')) || [];
         comprasRealizadas.push(arregloCompra);
 

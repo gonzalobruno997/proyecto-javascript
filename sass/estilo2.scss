@@ -19,7 +19,10 @@ $redes: (
 .ig{
     color: map-get($redes , instagram);
 }
-
+.enlaceProductos{
+    text-decoration: none;
+    color: #00acee;
+}
 .boton{
     display: block;
     max-width: 145px;
@@ -225,9 +228,6 @@ footer{
             text-align: center;
             padding: 1rem 0;
             margin-bottom: .5rem;
-            &:hover{
-              //  transform: rotate(5deg);
-            }
             p{
                 font-size: 20px;
                 

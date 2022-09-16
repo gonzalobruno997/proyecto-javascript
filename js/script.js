@@ -1,7 +1,7 @@
 let spanCarrito = document.querySelector('#spanCarrito');
 let carrito = JSON.parse(localStorage.getItem('carrito'));
 
-// OPERADOR TERNARIO
+
 let arregloCompra = (carrito) ? carrito : [];
 
 

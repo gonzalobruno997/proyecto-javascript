@@ -6,7 +6,7 @@ for (const element of comprasRealizadas) {
     totalesCompra.push(total);
 }
 
-// SPREAD
+
 let ventaMaxima = Math.max(...totalesCompra);
 let ventaMinima = Math.min(...totalesCompra);
 

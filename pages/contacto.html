@@ -76,18 +76,18 @@
 
                 <div class="row">
                     <div class="col-12 col-md-6 mb-4">
-                        <form class="form-contact  h-100" action="#">
+                        <form class="form-contact  h-100" action="#" id="contact-form">
                             <div>
-                                <label for="name">Nombre</label>
-                                <input type="text" name="name" id="name" required>
+                                <label for="nombre">Nombre</label>
+                                <input type="text" name="nombre" id="nombre" required>
                             </div>
                             <div>
                                 <label for="correo">Correo</label>
                                 <input type="email" name="correo" id="correo" required>
                             </div>
                             <div>
-                                <label for="phone">Teléfono</label>
-                                <input type="text" name="phone" id="phone" required>
+                                <label for="telefono">Teléfono</label>
+                                <input type="text" name="telefono" id="telefono" required>
                             </div>
                             <div>
                                 <label for="consulta">Consulta</label>
@@ -130,5 +130,9 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
     </script>
     <script src="../js/script.js"></script>
+    <!-- EMAIL JS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="../js/email.js"></script>
+
 </body>
 </html>

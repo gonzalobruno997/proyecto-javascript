@@ -2,7 +2,7 @@ let producto;
 let cantidadProducto = 0;
 let idProducto = 0;
 
-
+// CARGO DE FORMA ASICONCRONA LOS PRODUCTOS QUE SE ENCUENTRAN DENTRO DEL ARCHIVO DATA.JSON
 async function obtenerProductos(){
     const resp = await fetch('../data.json');
     const data = await resp.json();
@@ -51,18 +51,18 @@ function mostrarProductos(arregloProductos){
     
 }
 
+//ESTA FUNCION ME SIRVE PARA AGREGAR UN PRODUCTO AL CARRITO
 function agregarAlCarrito(idProducto,cantidadProducto,arregloProductos){
-
+    //BUSCO EL PRODUCTO DENTRO DEL ARREGLO DE PRODUCTOS
     producto = arregloProductos.find( (element) => idProducto == element.id);
-
-    // desestructuracion del objeto.
+    // CAPTURO LOS DATOS QUE ME INTERESAN
     let {id,nombre,precio,stock,imgProducto} =  producto;
-    // operador ternario
+    // CALCULO SI EL STOCK SOLICITADO ESTÁ DISPONIBLE
     let stockDisponible = (stock >= cantidadProducto) ? true : false;
-
+    // CALCULO EL SUBTOTAL
     let subTotal =  cantidadProducto * precio;
 
-
+    // VERIFICO SI EL PRODUCTO QUE SE BUSCA AGREGAR AL CARRITO, YA EXISTE DENTRO DE ESTE
     let productoRepetido = arregloCompra.findIndex( (element) => idProducto == element.id);
     if (stockDisponible){
         if(productoRepetido != -1){
@@ -73,11 +73,12 @@ function agregarAlCarrito(idProducto,cantidadProducto,arregloProductos){
         }
         localStorage.setItem('carrito',JSON.stringify(arregloCompra));
 
-        // alert('Producto agregado al carrito');
+        
         if(arregloCompra.length > 0){
         spanCarrito.style.display = "block";
         spanCarrito.textContent = arregloCompra.length;
         }
+        // DESENCADENO UN SWEET ALERT PARA INFORMAR POR EXITO O ERROR.
         swal({
             title: "Exito",
             text: "Has añadido el producto al carrito",
